@@ -1,0 +1,38 @@
+ <form class="form" action="">
+    <div class="form__wrap">
+        <div class="form__title">Регистрация</div>
+        <fieldset class="form__fields">
+            <div class="form__field">
+                <label class="form__label" for="email">Почта</label>
+                <input class="form__input" type="text" id="email" name="email" value="pochta@yandex.ru" />
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="login">Логин</label>
+                <input class="form__input" type="text" id="login" name="login" value="ivanivanov" />
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="first_name">Имя</label>
+                <input class="form__input" type="text" id="first_name" name="first_name" value="Иван" />
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="second_name">Фамилия</label>
+                <input class="form__input" type="text" id="second_name" name="second_name" value="" />
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="phone">Телефон</label>
+                <input class="form__input" type="text" id="phone" name="phone" value="" />
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="password">Пароль</label>
+                <input class="form__input" type="text" id="password" name="password" value="" />
+            </div>
+            <div class="form__field">
+                <label class="form__label" for="repeatPassword">Пароль (ещё раз)</label>
+                <input class="form__input" type="text" id="repeatPassword" name="repeatPassword" value="" />
+                <div class="error">Пароли не совпадают</div>
+            </div>
+        </fieldset>
+        {{>button-primary btnSubmitText="Зарегистрироваться"}}
+        <a class="link sign-in-link" href="./login-page.hbs">Войти</a>
+    </div>
+</form>

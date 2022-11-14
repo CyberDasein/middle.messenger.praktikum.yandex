@@ -1,0 +1,57 @@
+$Inter: "Inter", sans-serif;
+$color-white: #fff;
+$color-blue: #3369F3;
+$color-dark-grey: #1e1e1e;
+$fs-s: 12px;
+// mixins for media
+
+@mixin max-media-xs {
+    @media (max-width: 575.98px) {
+        @content;
+    }
+}
+@mixin min-media-xs {
+    @media (min-width: 576px) {
+        @content;
+    }
+}
+@mixin max-media-sm {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin min-media-sm {
+    @media (min-width: 768.98px) {
+        @content;
+    }
+}
+@mixin max-media-md {
+    @media (max-width: 960.98px) {
+        @content;
+    }
+}
+@mixin min-media-md {
+    @media (min-width: 992.98px) {
+        @content;
+    }
+}
+@mixin max-media-lg {
+    @media (max-width: 1279.98px) {
+        @content;
+    }
+}
+@mixin max-media-l {
+    @media (max-width: 1366px) {
+        @content;
+    }
+}
+@mixin max-media-xl {
+    @media (max-width: 1599.98px) {
+        @content;
+    }
+}
+@mixin min-media-xl {
+    @media (min-width: 1600px) {
+        @content;
+    }
+}

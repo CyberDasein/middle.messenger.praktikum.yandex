@@ -1,0 +1,49 @@
+.form {
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 340px;
+    background: #ffffff;
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.14);
+    border-radius: 12px;
+    &__wrap {
+        padding: 30px;
+    }
+    &__title {
+        text-align: center;
+        color: #1e1e1e;
+        font-weight: 500;
+        font-size: 20px;
+    }
+    &__fields {
+        width: 100%;
+        margin: 0;
+        margin-top: 40px;
+        margin-bottom: 80px;
+        padding: 0;
+        border: none;
+    }
+    &__field {
+        margin-bottom: 16px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+    &__label {
+        display: block;
+        margin-bottom: 8px;
+        color: #999999;
+        font-weight: 500;
+        font-size: 9px;
+        cursor: pointer;
+    }
+    &__input {
+        width: 100%;
+        padding-bottom: 6px;
+        font-weight: 500;
+        font-size: 13px;
+        color: $color-dark-grey;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $color-blue;
+    }
+}
