@@ -1,0 +1,136 @@
+@import "../../styles/main";
+
+.back-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  padding-left: 18px;
+  padding-right: 18px;
+  background: #fbfbfb;
+  transition: all 0.2s ease;
+  border-left: 1px solid #eaeaea;
+
+  &:hover {
+    background: #efefef;
+  }
+
+  .back-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    background-color: $color-blue;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      background: url("../../img/back-arr.svg") no-repeat center;
+      z-index: 12;
+    }
+  }
+}
+
+.profile {
+  margin: 0 auto;
+  max-width: 510px;
+
+  &__wrap {
+    margin-top: 60px;
+  }
+
+  &__avatar {
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transform: all 0.2s ease;
+
+    img {
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background-color: #efefef;
+      cursor: pointer;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: max-content;
+      margin: 0 auto;
+    }
+
+    input[type="file"] {
+      position: absolute;
+      z-index: 11;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding-bottom: 0;
+      border: none;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__info {
+    margin-top: 60px;
+  }
+
+  &__el {
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 13px;
+
+    input {
+      display: inline-block;
+      border-bottom: 1px solid $color-blue;
+
+      &:disabled {
+        background-color: transparent;
+        border-bottom: 1px solid #eaeaea;
+
+        & + .error {
+          display: none !important;
+        }
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__func {
+    margin-top: 60px;
+
+    .link {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #eaeaea;
+    }
+
+    .exit {
+      text-decoration: none;
+      color: #f00;
+    }
+  }
+}

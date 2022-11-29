@@ -1,0 +1,11 @@
+.message-item {
+  padding: 11px;
+  max-width: 380px;
+  margin-bottom: 10px;
+  background: #f8f8f8;
+  border-radius: 0 8px 8px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

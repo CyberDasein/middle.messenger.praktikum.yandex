@@ -1,0 +1,151 @@
+@import "../../styles/_vars.scss";
+
+.search {
+  position: relative;
+  margin-top: 22px;
+
+  input {
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 40px;
+    text-align: center;
+    background: #efefef;
+    outline: none;
+    border-radius: 5px;
+    border: 1px solid transparent;
+
+    &:focus,
+    &:hover {
+      border: 1px solid #eaeaea;
+    }
+  }
+
+  &__btn {
+    display: inline-block;
+    position: absolute;
+    top: 7px;
+    left: 90%;
+    z-index: 11;
+    width: 20px;
+    height: 20px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    background: url("../../img/search-icon.png") no-repeat center;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+.chat {
+  &__wrapper {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  &__dialogs {
+    width: 100%;
+    max-width: 310px;
+    padding-top: 21px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-right: 1px solid #eaeaea;
+    background: #fbfbfb;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 10px 20px;
+    padding-bottom: 50px;
+    background: #fff;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    padding-bottom: 10px;
+    justify-content: space-between;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  &__messages {
+    margin-top: 100px;
+    margin-bottom: 30px;
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    margin-top: auto;
+    justify-content: space-between;
+
+    .message-field {
+      position: relative;
+      margin-left: 10px;
+      margin-right: 10px;
+      width: 100%;
+
+      input {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        background: #efefef;
+        border: none;
+        border-radius: 30px;
+      }
+
+      .error {
+        position: absolute;
+        top: 100%;
+      }
+    }
+
+    .send {
+      width: 28px;
+      height: 28px;
+      background-image: url("../../img/right-arrow.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      padding: 0;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+  }
+}
+
+.dialogs-list {
+  margin-top: 14px;
+}
+
+.user-chat {
+  display: flex;
+  position: relative;
+  margin-bottom: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #eaeaea;
+
+  &__time {
+    position: absolute;
+    top: 12px;
+    right: 0;
+    color: #999;
+    font-weight: 500;
+    font-size: 9px;
+  }
+}
+
+.send-more {
+  &__btn {
+    width: 32px;
+    height: 32px;
+    background: url("../../img/pin.png") no-repeat center;
+    border: none;
+    cursor: pointer;
+  }
+}
