@@ -5,5 +5,5 @@
     "selector-class-pattern": null,
     "import-notation": "string"
   },
-  "ignoreFiles": ["dist/*"]
+  "ignoreFiles": ["**/*.css"]
 }
