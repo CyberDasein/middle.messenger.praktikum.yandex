@@ -1,7 +1,7 @@
 import Block from "../../utils/Block";
 import template from "./input.hbs";
 
-interface inputProps {
+interface InputProps {
   type: string;
   name: string;
   placeholder?: string;
@@ -13,12 +13,8 @@ interface inputProps {
   };
 }
 
-export class Input extends Block<inputProps> {
-  constructor(props: inputProps) {
-    super({
-      ...props,
-    });
-  }
+export class Input extends Block<InputProps> {
+  
   public getName() {
     return (this.element as HTMLInputElement).name;
   }

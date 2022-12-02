@@ -10,7 +10,23 @@ export default class RegistrationPage extends Block {
   constructor() {
     super({});
   }
+  _onBlurValidate(e: Event) {
+    const element = e.target as HTMLInputElement;
+    const elementName = element.name;
+    const regexp = validator[elementName].re;
 
+    if (!regexp.test(element.value)) {
+      makeErrorMessage(element, validator[elementName].message);
+    }
+  }
+  _onFocusValidate(e: Event) {
+    const element = e.target as HTMLInputElement;
+    const container = element.closest(".form__field");
+    const errorMessage = container?.querySelector<HTMLElement>(".error");
+    if (errorMessage) {
+      errorMessage.style.display = "none";
+    }
+  }
   init() {
     this.children.button = new Button({
       label: "Зарегистрироваться",
@@ -29,132 +45,48 @@ export default class RegistrationPage extends Block {
       name: "login",
       type: "text",
       events: {
-        blur: (e) => {
-          const regexp = validator.login.re;
-
-          if (!regexp.test((<HTMLInputElement>e.target).value)) {
-            makeErrorMessage(e.target, validator.login.message);
-          }
-        },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        blur: (e) => this._onBlurValidate(e),
+        focus: (e) => this._onFocusValidate(e),
       },
     });
     this.children.inputEmail = new Input({
       name: "email",
       type: "text",
       events: {
-        blur: (e) => {
-          const regexp = validator.email.re;
-
-          if (!regexp.test((<HTMLInputElement>e.target).value)) {
-            makeErrorMessage(e.target, validator.email.message);
-          }
-        },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        blur: (e) => this._onBlurValidate(e),
+        focus: (e) => this._onFocusValidate(e),
       },
     });
     this.children.inputFirstName = new Input({
       name: "first_name",
       type: "text",
       events: {
-        blur: (e) => {
-          const regexp = validator.first_name.re;
-
-          if (!regexp.test((<HTMLInputElement>e.target).value)) {
-            makeErrorMessage(e.target, validator.first_name.message);
-          }
-        },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        blur: (e) => this._onBlurValidate(e),
+        focus: (e) => this._onFocusValidate(e),
       },
     });
     this.children.inputSecondName = new Input({
       name: "second_name",
       type: "text",
       events: {
-        blur: (e) => {
-          const regexp = validator.second_name.re;
-
-          if (!regexp.test((<HTMLInputElement>e.target).value)) {
-            makeErrorMessage(e.target, validator.second_name.message);
-          }
-        },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        blur: (e) => this._onBlurValidate(e),
+        focus: (e) => this._onFocusValidate(e),
       },
     });
     this.children.inputPhone = new Input({
       name: "phone",
       type: "text",
       events: {
-        blur: (e) => {
-          const regexp = validator.phone.re;
-
-          if (!regexp.test((<HTMLInputElement>e.target).value)) {
-            makeErrorMessage(e.target, validator.phone.message);
-          }
-        },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        blur: (e) => this._onBlurValidate(e),
+        focus: (e) => this._onFocusValidate(e),
       },
     });
     this.children.inputPassword = new Input({
       name: "password",
       type: "password",
       events: {
-        blur: (e) => {
-          const regexp = validator.password.re;
-
-          if (!regexp.test((<HTMLInputElement>e.target).value)) {
-            makeErrorMessage(e.target, validator.password.message);
-          }
-        },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        blur: (e) => this._onBlurValidate(e),
+        focus: (e) => this._onFocusValidate(e),
       },
     });
     this.children.inputRepeatPassword = new Input({
@@ -167,15 +99,7 @@ export default class RegistrationPage extends Block {
             makeErrorMessage(e.target, "Пароли не совпадают");
           }
         },
-        focus: (e) => {
-          const container = (<HTMLInputElement>e.target).closest(
-            ".form__field"
-          );
-          const errorMessage = container?.querySelector<HTMLElement>(".error");
-          if (errorMessage) {
-            errorMessage.style.display = "none";
-          }
-        },
+        focus: (e) => this._onFocusValidate(e),
       },
     });
   }

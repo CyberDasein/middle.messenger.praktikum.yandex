@@ -37,7 +37,7 @@ export default class ChatPage extends Block {
         })
       );
     }
-    for (let i = 0; i < 5; i++) {
+     for (let i = 0; i < 5; i++) {
       this.children.myMessages.push(
         new Message({
           message: "Lorem ipsum dolor sit amet consectetur adipisicing elit",

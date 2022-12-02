@@ -1,4 +1,4 @@
-export const validator = {
+export const validator: Record<string, any> = {
   login: {
     re: /^[a-zA-Z0-9_-]{3,20}$/,
     message:

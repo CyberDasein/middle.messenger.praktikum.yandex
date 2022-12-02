@@ -12,10 +12,7 @@ interface ButtonProps {
 }
 
 export class Button extends Block<ButtonProps> {
-  constructor(props: ButtonProps) {
-    super({ ...props });
-  }
-
+  
   render() {
     return this.compile(template, { ...this.props, styles });
   }

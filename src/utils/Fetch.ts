@@ -9,12 +9,13 @@ type Options = {
   method: Method;
   data?: any;
 };
+type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>
 
 function queryStringify(data: Record<string, any>) {
   return Object.entries(data).map(([key, value]) => key + '=' + value).join('&');
 }
 export default class HTTPTransport {
-  get(url: string, options: Options = { method: Method.Get }): Promise<XMLHttpRequest> {
+  get: HTTPMethod = (url, options = { method: Method.Get }) => {
     if (options.data) {
       url += '?' + queryStringify(options.data);
       options.data = {};
@@ -22,15 +23,15 @@ export default class HTTPTransport {
     return this.request(url, { ...options, method: Method.Get });
   }
 
-  post(url: string, options: Options = { method: Method.Post }): Promise<XMLHttpRequest> {
+  post: HTTPMethod = (url, options = { method: Method.Post }) => {
     return this.request(url, options);
   }
 
-  put(url: string, options: Options = { method: Method.Put }): Promise<XMLHttpRequest> {
+  put: HTTPMethod = (url, options = { method: Method.Put }) => {
     return this.request(url, options);
   }
 
-  delete(url: string, options: Options = { method: Method.Delete }): Promise<XMLHttpRequest> {
+  delete: HTTPMethod = (url, options = { method: Method.Delete }) => {
     return this.request(url, options);
   }
 
