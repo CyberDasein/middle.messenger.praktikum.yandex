@@ -1,0 +1,40 @@
+@import "../../styles/vars.scss";
+
+.user {
+  display: flex;
+  cursor: pointer;
+
+  &__icon {
+    width: 47px;
+    height: 47px;
+    margin-right: 10px;
+    background-color: #efefef;
+    border-radius: 50%;
+    flex-shrink: 0;
+
+    &.user-small-icon {
+      width: 34px;
+      height: 34px;
+    }
+  }
+
+  &__text {
+    max-width: 70%;
+
+    strong {
+      font-weight: 600;
+      font-size: 13px;
+    }
+
+    p {
+      margin-bottom: 0;
+      margin-top: 4px;
+      font-weight: 500;
+      color: #999;
+    }
+
+    .from {
+      color: $color-dark-grey;
+    }
+  }
+}

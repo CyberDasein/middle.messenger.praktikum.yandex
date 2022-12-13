@@ -1,0 +1,38 @@
+.link {
+  display: block;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+
+  &.no-acc-link,
+  &.sign-in-link {
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
+
+.link-to-profile {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 500;
+  color: #999;
+  transition: all 0.2s ease;
+
+  &::after {
+    content: "";
+    display: inline-block;
+    margin-left: 5px;
+    width: 4px;
+    height: 8px;
+    background: url("../../img/arr.svg") no-repeat center;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+}

@@ -1,0 +1,40 @@
+<div class="chat">
+  <div class="chat__wrapper">
+    <div class="chat__dialogs">
+      {{{linkToProfile}}}
+      <div class="search">
+        <input placeholder="Поиск" type="text" />
+        <button class="search__btn"> </button>
+      </div>
+      <ul class="dialogs-list">
+        {{#each usersDialogs}}
+          <li class="user-chat">{{{this}}}</li>
+        {{/each}}
+      </ul>
+    </div>
+    <div class="chat__inner">
+      <div class="chat__top">
+        {{{user}}}
+        {{{settings}}}
+      </div>
+      <div class="chat__messages">
+        {{#each myMessages}}
+          {{{this}}}
+        {{/each}}
+      </div>
+      <div class="chat__bottom">
+        <div class="send-more">
+          <button class="send-more__btn"></button>
+          <div class="send-more__list">
+            <div class="send-more__item"></div>
+          </div>
+        </div>
+        <div class="message-field">
+          {{{inputMessage}}}
+          <div class="error"></div>
+        </div>
+        {{{button}}}
+      </div>
+    </div>
+  </div>
+</div>

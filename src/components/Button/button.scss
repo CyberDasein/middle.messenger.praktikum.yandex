@@ -1,0 +1,20 @@
+@import "../../styles/vars";
+
+.button-primary {
+  width: 100%;
+  text-align: center;
+  color: $color-white;
+  padding: 12px 70px;
+  font-weight: 500;
+  font-size: 13px;
+  background: $color-blue;
+  border: none;
+  overflow: none;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+  border-radius: 8px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
