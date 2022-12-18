@@ -1,0 +1,20 @@
+<div>
+  <div class="chat__messages">
+    {{#each messages}}
+      {{{this}}}
+    {{/each}}
+  </div>
+  <div class="chat__bottom">
+    <div class="send-more">
+      <button class="send-more__btn"></button>
+      <div class="send-more__list">
+        <div class="send-more__item"></div>
+      </div>
+    </div>
+    <div class="message-field">
+      {{{inputMessage}}}
+      <div class="error"></div>
+    </div>
+    {{{button}}}
+  </div>
+</div>

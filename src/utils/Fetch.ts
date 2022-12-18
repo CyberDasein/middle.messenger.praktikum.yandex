@@ -5,61 +5,82 @@ export enum Method {
   Patch = 'Patch',
   Delete = 'Delete'
 }
+
 type Options = {
   method: Method;
   data?: any;
 };
-type HTTPMethod = (url: string, options?: Options) => Promise<XMLHttpRequest>
 
-function queryStringify(data: Record<string, any>) {
-  return Object.entries(data).map(([key, value]) => key + '=' + value).join('&');
-}
 export default class HTTPTransport {
-  get: HTTPMethod = (url, options = { method: Method.Get }) => {
-    if (options.data) {
-      url += '?' + queryStringify(options.data);
-      options.data = {};
-    }
-    return this.request(url, { ...options, method: Method.Get });
+  static API_URL = 'https://ya-praktikum.tech/api/v2';
+  protected endpoint: string;
+
+  constructor(endpoint: string) {
+    this.endpoint = `${HTTPTransport.API_URL}${endpoint}`;
   }
 
-  post: HTTPMethod = (url, options = { method: Method.Post }) => {
-    return this.request(url, options);
+  public get<Response>(path = '/'): Promise<Response> {
+    return this.request<Response>(this.endpoint + path);
   }
 
-  put: HTTPMethod = (url, options = { method: Method.Put }) => {
-    return this.request(url, options);
+  public post<Response = void>(path: string, data?: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Post,
+      data,
+    });
   }
 
-  delete: HTTPMethod = (url, options = { method: Method.Delete }) => {
-    return this.request(url, options);
+  public put<Response = void>(path: string, data: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Put,
+      data,
+    });
   }
 
-  request(url: string, options: Options = { method: Method.Get }): Promise<XMLHttpRequest> {
-    const { method, data } = options;
+  public patch<Response = void>(path: string, data: unknown): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Patch,
+      data,
+    });
+  }
+
+  public delete<Response>(path: string): Promise<Response> {
+    return this.request<Response>(this.endpoint + path, {
+      method: Method.Delete,
+    });
+  }
+
+  private request<Response>(url: string, options: Options = {method: Method.Get}): Promise<Response> {
+    const {method, data} = options;
 
     return new Promise((resolve, reject) => {
       const xhr = new XMLHttpRequest();
-
       xhr.open(method, url);
-      xhr.withCredentials = true;
 
-      xhr.onload = function () {
-        const { status, response } = xhr;
-        if (status === 200 || status === 201) {
-          return resolve(JSON.parse(response));
+      xhr.onreadystatechange = (e) => {
+
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+          if (xhr.status < 400) {
+            resolve(xhr.response);
+          } else {
+            reject(xhr.response);
+          }
         }
-        return reject(JSON.parse(response));
       };
 
-      xhr.onabort = reject;
-      xhr.onerror = reject;
-      xhr.ontimeout = reject;
+      xhr.onabort = () => reject({reason: 'abort'});
+      xhr.onerror = () => reject({reason: 'network error'});
+      xhr.ontimeout = () => reject({reason: 'timeout'});
+
+      xhr.setRequestHeader('Content-Type', 'application/json');
+
+      xhr.withCredentials = true;
+      xhr.responseType = 'json';
 
       if (method === Method.Get || !data) {
         xhr.send();
       } else {
-        xhr.send(data);
+        xhr.send(JSON.stringify(data));
       }
     });
   }

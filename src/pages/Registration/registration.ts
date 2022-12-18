@@ -5,6 +5,8 @@ import { Link } from "../../components/Link";
 import { makeErrorMessage } from "../../utils/makeErrorMessage";
 import { validator } from "../../utils/formValidators";
 import { Input } from "../../components/Input";
+import AuthController from "../../controllers/AuthController";
+import { RegistryData } from "../../interfaces/interfaces";
 
 export default class RegistrationPage extends Block {
   constructor() {
@@ -112,7 +114,7 @@ export default class RegistrationPage extends Block {
         (child as Input).getValue(),
       ]);
     const data = Object.fromEntries(values);
-    console.log(data);
+    AuthController.signup(data as RegistryData);
   }
 
   render() {

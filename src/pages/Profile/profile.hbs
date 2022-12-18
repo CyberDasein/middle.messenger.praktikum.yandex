@@ -6,11 +6,11 @@
     <div class="profile__wrap">
       <div class="profile__avatar">
         <div class="avatar-wrap">
-            <img src="{{{defaultAvatar}}}" alt="avatar" />
+            <img src="{{#if avatar}}{{{avatar}}}{{else}}{{{defaultAvatar}}}{{/if}}" alt="avatar" />
             {{{inputAvatar}}}
         </div>
       </div>
-      <div class="profile__name">Ivan</div>
+      <div class="profile__name">{{first_name}}</div>
       <ul class="profile__info">
 
         <li class="profile__el">

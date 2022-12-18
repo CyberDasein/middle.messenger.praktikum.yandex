@@ -123,22 +123,7 @@
   margin-top: 14px;
 }
 
-.user-chat {
-  display: flex;
-  position: relative;
-  margin-bottom: 12px;
-  padding-top: 12px;
-  border-top: 1px solid #eaeaea;
 
-  &__time {
-    position: absolute;
-    top: 12px;
-    right: 0;
-    color: #999;
-    font-weight: 500;
-    font-size: 9px;
-  }
-}
 
 .send-more {
   &__btn {

@@ -6,10 +6,14 @@ import defaultAvatar from "./avatar.png";
 import { Input } from "../../components/Input";
 import { makeErrorMessage } from "../../utils/makeErrorMessage";
 import { validator } from "../../utils/formValidators";
+import AuthController from "../../controllers/AuthController";
+import { Button } from "../../components/Button/index";
+import { GetUser } from "../../interfaces/interfaces";
+import { withStore } from "../../utils/Store";
 
-export default class ProfilePage extends Block {
-  constructor() {
-    super({});
+class ProfilePageBase extends Block {
+  constructor(props: GetUser) {
+    super({...props});
   }
   static isEditable = false;
 
@@ -32,6 +36,8 @@ export default class ProfilePage extends Block {
   }
 
   init() {
+    AuthController.fetchUser();
+    console.log(this.props)
     this.children.inputAvatar = new Input({
       name: "avatar",
       type: "file",
@@ -40,7 +46,7 @@ export default class ProfilePage extends Block {
     this.children.inputLogin = new Input({
       name: "login",
       type: "text",
-      value: "",
+      value: this.props.login,
       placeholder: "Логин",
       disabled: "disabled",
       events: {
@@ -51,7 +57,7 @@ export default class ProfilePage extends Block {
     this.children.inputEmail = new Input({
       name: "email",
       type: "text",
-      value: "test@yandex.ru",
+      value: this.props.email,
       disabled: "disabled",
       placeholder: "Email",
       events: {
@@ -63,6 +69,7 @@ export default class ProfilePage extends Block {
       name: "first_name",
       type: "text",
       placeholder: "Имя",
+      value: this.props.first_name,
       disabled: "disabled",
       events: {
         blur: (e) => this._onBlurValidate(e),
@@ -73,6 +80,7 @@ export default class ProfilePage extends Block {
       name: "second_name",
       type: "text",
       disabled: "disabled",
+      value: this.props.second_name,
       placeholder: "Фамилия",
       events: {
         blur: (e) => this._onBlurValidate(e),
@@ -84,6 +92,7 @@ export default class ProfilePage extends Block {
       type: "text",
       placeholder: "Телефон",
       disabled: "disabled",
+      value: this.props.phone,
       events: {
         blur: (e) => this._onBlurValidate(e),
         focus: (e) => this._onFocusValidate(e),
@@ -114,13 +123,11 @@ export default class ProfilePage extends Block {
         focus: (e) => this._onFocusValidate(e),
       },
     });
-    this.children.changeData = new Link({
+    this.children.changeData = new Button({
       className: "link-change-data",
       label: "Изменить данные",
-      href: "#",
       events: {
         click: (e) => {
-          e.preventDefault();
           ProfilePage.isEditable = !ProfilePage.isEditable;
           this.setEditableFields(ProfilePage.isEditable);
           if (ProfilePage.isEditable) {
@@ -132,10 +139,15 @@ export default class ProfilePage extends Block {
       },
     });
 
-    this.children.exitProfile = new Link({
+    this.children.exitProfile = new Button({
       className: "exit",
       label: "Выйти",
-      href: "/pages/Chat/chat.html",
+      events: {
+        click: (e) => {
+          e.preventDefault();
+          AuthController.logout();
+        },
+      },
     });
   }
   setEditableFields(isEdit: boolean) {
@@ -147,3 +159,6 @@ export default class ProfilePage extends Block {
     return this.compile(template, { ...this.props, styles, defaultAvatar });
   }
 }
+const withUser: any = withStore((state) => ({ ...state.user }))
+
+export const ProfilePage = withUser(ProfilePageBase);
