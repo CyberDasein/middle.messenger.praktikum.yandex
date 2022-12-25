@@ -6,6 +6,8 @@ import { Link } from "../../components/Link";
 import styles from "./login.scss";
 import { Input } from "../../components/Input/index";
 import { makeErrorMessage } from "../../utils/makeErrorMessage";
+import AuthController from "../../controllers/AuthController";
+import { AuthData } from "../../interfaces/interfaces";
 
 export class LoginPage extends Block {
   constructor() {
@@ -64,7 +66,6 @@ export class LoginPage extends Block {
         click: (e) => {
           e.preventDefault();
           this.onSubmit(); 
-          location.href = "/pages/Chat/chat.html";
         },
       },
     });
@@ -72,7 +73,7 @@ export class LoginPage extends Block {
     this.children.link = new Link({
       className: "no-acc-link",
       label: "Нет аккаунта?",
-      href: "/pages/Registration/registration.html",
+      href: "/registration",
     });
   }
   onSubmit() {
@@ -83,7 +84,7 @@ export class LoginPage extends Block {
         (child as Input).getValue(),
       ]);
     const data = Object.fromEntries(values);
-    console.log(data);
+    AuthController.signin(data as AuthData);
   }
   render() {
     return this.compile(template, { ...this.props, styles });
