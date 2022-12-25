@@ -1,7 +1,13 @@
-import { renderDom } from "../../utils/renderDom";
-import notFoundPage from "./../404/404";
+import Block from "../../utils/Block";
+import template from "./404.hbs";
+import styles from "./404.scss";
 
-document.addEventListener("DOMContentLoaded", () => {
-  const page = new notFoundPage();
-  renderDom("#notFoundPage", page);
-});
+export default class NotFoundPage extends Block {
+  constructor() {
+    super({});
+  }
+
+  render() {
+    return this.compile(template, { ...this.props, styles });
+  }
+}

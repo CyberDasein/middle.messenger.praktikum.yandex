@@ -10,6 +10,7 @@ interface InputProps {
   events?: {
     blur?: (e: Event) => void;
     focus?: (e: Event) => void;
+    keyup?: (e: Event) => void | undefined;
   };
 }
 

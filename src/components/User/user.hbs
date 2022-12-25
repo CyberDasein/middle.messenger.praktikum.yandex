@@ -1,5 +1,9 @@
 <div class="user {{className}}">
-  <div class="user__icon">{{avatar}}</div>
+  {{#if avatar}}
+    <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{avatar}}" alt="">
+  {{else}}
+    <div class="user__icon">{{avatar}}</div>
+  {{/if}}
   <div class="user__text">
     <strong>{{name}}</strong>
     <span class="user-chat__time">{{date}}</span>

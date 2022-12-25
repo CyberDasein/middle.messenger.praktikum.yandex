@@ -1,4 +1,5 @@
-import API, { ChatsAPI } from '../api/ChatsApi';
+import API, { ChatsAPI } from '../api/ChatsAPI';
+import { DeleteUsersInt } from '../interfaces/interfaces';
 import store from '../utils/Store';
 import MessagesController from './MessagesController';
 
@@ -29,6 +30,10 @@ class ChatsController {
 
   addUserToChat(id: number, userId: number) {
     this.api.addUsers(id, [userId]);
+  }
+
+  removeUsersFromChat(users : DeleteUsersInt) {
+    this.api.removeUsersFromChat(users);
   }
 
   async delete(id: number) {

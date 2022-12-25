@@ -1,5 +1,5 @@
 import { RegistryData, AuthData, GetUser } from "../interfaces/interfaces";
-import BaseAPI from "./BaseApi";
+import BaseAPI from "./BaseAPI";
 
 
 export class AuthAPI extends BaseAPI {

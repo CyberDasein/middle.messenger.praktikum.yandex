@@ -13,7 +13,6 @@ export class Message extends Block<MessageProps> {
       ...props,
     });
   }
-
   render() {
     return this.compile(template, { ...this.props, styles });
   }

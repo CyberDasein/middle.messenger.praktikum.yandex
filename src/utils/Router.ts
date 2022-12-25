@@ -1,3 +1,4 @@
+import NotFoundPage from '../pages/404';
 import Block from './Block';
 
 function isEqual(lhs: string, rhs: string): boolean {
@@ -82,6 +83,8 @@ class Router {
     const route = this.getRoute(pathname);
 
     if (!route) {
+      const errorPage = new Route("/404", NotFoundPage, this.rootQuery);
+      errorPage.render();
       return;
     }
 

@@ -4,12 +4,13 @@ import { Chat } from '../UserChat';
 import styles from './chatList.scss';
 import { withStore } from '../../utils/Store';
 import ChatsController from '../../controllers/ChatController';
-import MessagesController from '../../controllers/MessagesController';
-import { Link } from '../Link';
 import { ChatInfo } from '../../interfaces/interfaces';
+import { Button } from '../Button/index';
+
 
 
 interface ChatsListProps {
+  userId: number;
   chats: ChatInfo[];
   isLoaded: boolean;
 }
@@ -21,6 +22,18 @@ class ChatsListBase extends Block<ChatsListProps> {
 
   protected init() {
     this.children.chats = this.createChats(this.props);
+
+    this.children.addToChat = new Button ({
+        label: "Добавить чат",
+        type: "button",
+        events: {
+          click: (e) => {
+            const title = prompt("Введите название чата")
+            ChatsController.create(title as string)
+          },
+        },
+    })
+
   }
 
   protected componentDidUpdate(oldProps: ChatsListProps, newProps: ChatsListProps): boolean {

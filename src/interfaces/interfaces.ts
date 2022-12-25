@@ -57,3 +57,7 @@ export interface ChatsListProps {
   chats: ChatInfo[];
   isLoaded: boolean;
 }
+export interface DeleteUsersInt {
+  users: Array<number>,
+  chatId: number
+}

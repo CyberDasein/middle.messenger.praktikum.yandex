@@ -8,7 +8,6 @@ import { Button } from "../Button";
 import { Input } from "../Input";
 import { makeErrorMessage } from "../../utils/makeErrorMessage";
 import { validator } from "../../utils/formValidators";
-import ChatController from "../../controllers/ChatController";
 
 interface MessengerProps {
   selectedChat: number | undefined;
@@ -21,9 +20,8 @@ class MessengerBase extends Block<MessengerProps> {
     super(props);
   }
   protected init() {
-    console.log(this.props)
     this.children.messages = this.createMessages(this.props);
-   
+
     this.children.inputMessage = new Input({
       name: "message",
       placeholder: "Сообщение",
@@ -45,6 +43,18 @@ class MessengerBase extends Block<MessengerProps> {
             errorMessage.style.display = "none";
           }
         },
+        keyup: (e) => {
+          if (e.keyCode === 13) {
+            const input: any = document.querySelector("#message");
+            const inputMessage = this.children.inputMessage as Input;
+            const message = inputMessage.getValue();
+
+            if (message !== "") {
+              MessagesController.sendMessage(this.props.selectedChat!, message);
+              input.value = "";
+            }
+          }
+        },
       },
     });
     this.children.button = new Button({
@@ -53,10 +63,14 @@ class MessengerBase extends Block<MessengerProps> {
       events: {
         click: (e) => {
           e.preventDefault();
+          const input: any = document.querySelector("#message");
           const inputMessage = this.children.inputMessage as Input;
           const message = inputMessage.getValue();
 
-          MessagesController.sendMessage(this.props.selectedChat!, message);
+          if (message !== "") {
+            MessagesController.sendMessage(this.props.selectedChat!, message);
+            input.value = "";
+          }
         },
       },
     });
@@ -89,14 +103,14 @@ const withSelectedChatMessages = withStore((state) => {
     return {
       messages: [],
       selectedChat: undefined,
-      userId: state.user.id,
+      userId: state.user.id
     };
   }
 
   return {
     messages: (state.messages || {})[selectedChatId] || [],
     selectedChat: state.selectedChat,
-    userId: state.user.id,
+    userId: state.user.id
   };
 });
 

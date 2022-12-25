@@ -1,5 +1,5 @@
-import BaseAPI from "./BaseApi";
-import { GetUser, ChatInfo } from "../interfaces/interfaces";
+import BaseAPI from "./BaseAPI";
+import { GetUser, ChatInfo, DeleteUsersInt } from "../interfaces/interfaces";
 
 export class ChatsAPI extends BaseAPI {
   constructor() {
@@ -24,6 +24,10 @@ export class ChatsAPI extends BaseAPI {
 
   addUsers(id: number, users: number[]): Promise<unknown> {
     return this.http.put("/users", { users, chatId: id });
+  }
+
+  removeUsersFromChat(users: DeleteUsersInt): Promise<unknown> {
+    return this.http.delete("/users", users);
   }
 
   async getToken(id: number): Promise<string> {

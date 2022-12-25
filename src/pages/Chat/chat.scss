@@ -73,9 +73,18 @@
     border-bottom: 1px solid #eaeaea;
   }
 
+  .wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
   &__messages {
-    margin-top: 100px;
-    margin-bottom: 30px;
+    padding-top: 50px;
+    padding-bottom: 30px;
+    max-height: 65vh;
+    overflow-y: auto;
   }
 
   &__bottom {
@@ -119,11 +128,24 @@
   }
 }
 
+.chat-not-selected {
+  width: 100%;
+  margin-top: 10%;
+  text-align: center;
+
+  h2 {
+    margin: 0 auto;
+    max-width: max-content;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-weight: 500;
+    background-color: #f0daff;
+  }
+}
+
 .dialogs-list {
   margin-top: 14px;
 }
-
-
 
 .send-more {
   &__btn {

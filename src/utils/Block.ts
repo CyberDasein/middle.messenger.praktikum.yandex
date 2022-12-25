@@ -90,6 +90,14 @@ class Block<P extends Record<string, any> = any> {
   protected init() {
   }
 
+  show() {
+    this.getContent()!.style.display = "block";
+  }
+
+  hide() {
+    this.getContent()!.style.display = "none";
+  }
+
   _componentDidMount() {
     this.componentDidMount();
   }

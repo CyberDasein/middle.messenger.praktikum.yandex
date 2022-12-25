@@ -1,10 +1,9 @@
-import { renderDom } from "./utils/renderDom";
 import { LoginPage } from "./pages/Login/index";
-import  ChatPage  from "./pages/Chat/chat";
-import  RegistrationPage  from "./pages/Registration/registration";
-import {ProfilePage} from "./pages/Profile/profile";
-import serverErrorPage  from "./pages/500/500";
-import  notFoundPage  from "./pages/404/404";
+import { ChatPage } from "./pages/Chat";
+import RegistrationPage from "./pages/Registration";
+import { ProfilePage } from "./pages/Profile";
+import ServerErrorPage from "./pages/500";
+import NotFoundPage from "./pages/404";
 import Router from "./utils/Router";
 import AuthController from "./controllers/AuthController";
 
@@ -13,14 +12,17 @@ enum Routes {
   Registration = "/registration",
   Profile = "/profile",
   ChatPage = "/chats",
+  Error404 = "/404",
+  Error500 = "/500",
 }
 
 document.addEventListener("DOMContentLoaded", async () => {
-  Router
-    .use(Routes.Index, LoginPage)
+  Router.use(Routes.Index, LoginPage)
     .use(Routes.Registration, RegistrationPage)
     .use(Routes.ChatPage, ChatPage)
-    .use(Routes.Profile, ProfilePage);
+    .use(Routes.Profile, ProfilePage)
+    .use(Routes.Error404, NotFoundPage)
+    .use(Routes.Error500, ServerErrorPage);
 
   let isProtectedRoute = true;
 

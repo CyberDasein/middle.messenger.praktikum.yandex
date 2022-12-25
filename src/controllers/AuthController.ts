@@ -1,6 +1,5 @@
 import { RegistryData, AuthData } from "../interfaces/interfaces";
 import API, {AuthAPI} from "../api/AuthAPI"
-//import store from '../utils/Store';
 import Router from '../utils/Router';
 import store from "../utils/Store";
 
@@ -15,7 +14,7 @@ export class AuthController {
     try {
       await this.api.signin(data);
 
-      Router.go('/profile');
+      Router.go('/chats');
     } catch (e: any) {
       console.error(e);
     }
@@ -27,7 +26,7 @@ export class AuthController {
 
       await this.fetchUser();
 
-      Router.go('/profile');
+      Router.go('/chats');
     } catch (e: any) {
       console.error(e.message);
     }

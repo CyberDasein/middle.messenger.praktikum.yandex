@@ -1,15 +1,24 @@
-<div class="chat-wrap {{#if isSelected }}{{ styles.chat--selected }}{{/if}}">
-    {{#if unread_count }}
-        <span class="unread">{{unread_count}}</span>
-    {{/if}}
+<li class="user-chat {{#if isSelected }}user-chat--selected{{/if}}">
+    <div class="chat-wrap">
+        {{#if unread_count }}
+            <span class="unread">{{unread_count}}</span>
+        {{/if}}
 
-    <div class="user {{className}}">
-    <div class="user__icon">{{avatar}}</div>
-    <div class="user__text">
-        <strong>{{last_message.user.first_name}}</strong>
-        <span class="user-chat__time">{{last_message.time}}</span>
-        <p>{{last_message.content}}</p>
-    </div>
-    </div>
+        <div class="user {{className}}">
+        <div class="user__icon">{{avatar}}</div>
+        <div class="user__text">
+            {{#if last_message.user.first_name }}
+                <strong>{{last_message.user.login}}</strong>
+                {{else}}
+                Чат пустой, добавьте в него пользователя
+            {{/if}}
+                <span class="user-chat__time">{{time}}</span>
+            {{#if isSelected }}
+                {{{deleteChat}}}
+            {{/if}}
+            <p>{{last_message.content}}</p>
+        </div>
+        </div>
 
-</div>
+    </div>
+</li>
