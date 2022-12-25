@@ -32,6 +32,10 @@ class ChatsController {
     this.api.addUsers(id, [userId]);
   }
 
+  addChatAvatar(id: number, avatar: FormData) {
+    this.api.addChatAvatar(id, avatar);
+  }
+
   removeUsersFromChat(users : DeleteUsersInt) {
     this.api.removeUsersFromChat(users);
   }

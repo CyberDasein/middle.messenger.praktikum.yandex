@@ -73,7 +73,7 @@ export class LoginPage extends Block {
     this.children.link = new Link({
       className: "no-acc-link",
       label: "Нет аккаунта?",
-      href: "/registration",
+      href: "/sign-up",
     });
   }
   onSubmit() {

@@ -32,7 +32,7 @@ export class UserController {
   async updatePassword(data: Record<string, string>) {
     try {
       await this.api.updatePassword(data);
-      Router.go("/profile");
+      Router.go("/settings");
     } catch (e: any) {
       console.error(e);
     }
@@ -41,7 +41,7 @@ export class UserController {
   async updateProfile(data: GetUser) {
     try {
       await this.api.updateProfile(data);
-      Router.go("/profile");
+      Router.go("/settings");
     } catch (e: any) {
       console.error(e);
     }

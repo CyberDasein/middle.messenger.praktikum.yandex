@@ -9,9 +9,9 @@ import AuthController from "./controllers/AuthController";
 
 enum Routes {
   Index = "/",
-  Registration = "/registration",
-  Profile = "/profile",
-  ChatPage = "/chats",
+  Registration = "/sign-up",
+  Profile = "/settings",
+  ChatPage = "/messenger",
   Error404 = "/404",
   Error500 = "/500",
 }

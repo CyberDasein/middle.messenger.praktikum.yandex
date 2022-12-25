@@ -26,7 +26,7 @@ class ChatPageBase extends Block {
     this.children.linkToProfile = new Link({
       className: "link-to-profile",
       label: "Профиль",
-      href: "/profile",
+      href: "/settings",
     });
     this.children.user = new User({
       name: this.props.first_name,
@@ -34,7 +34,7 @@ class ChatPageBase extends Block {
       className: "align-center",
       events: {
         click: () => {
-          Router.go("/profile")
+          Router.go("/settings")
         },
       },
     });

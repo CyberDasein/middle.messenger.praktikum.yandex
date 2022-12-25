@@ -10,6 +10,7 @@ import { Button } from "../../components/Button/index";
 import { GetUser } from "../../interfaces/interfaces";
 import { withUser } from "../../utils/Store";
 import UserController from "../../controllers/UserController";
+import Router from "../../utils/Router";
 
 class ProfilePageBase extends Block {
   constructor(props: GetUser) {
@@ -172,6 +173,15 @@ class ProfilePageBase extends Block {
             this.setEditableFields(false);
             this.onSave();
           }
+        },
+      },
+    });
+    this.children.backButton = new Button({
+      className: "back-btn",
+      type: "button",
+      events: {
+        click: (e) => {
+          Router.go("/messenger")
         },
       },
     });
