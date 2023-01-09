@@ -19,6 +19,7 @@
 
   .back-btn {
     display: flex;
+    padding: 0;
     justify-content: center;
     align-items: center;
     width: 28px;
@@ -43,7 +44,7 @@
   max-width: 510px;
 
   &__wrap {
-    margin-top: 60px;
+    margin-top: 20px;
   }
 
   &__avatar {
@@ -100,6 +101,12 @@
     font-weight: 500;
     font-size: 13px;
 
+    small {
+      display: inline-block;
+      font-weight: normal;
+      margin-bottom: 8px;
+    }
+
     input {
       display: inline-block;
       border-bottom: 1px solid $color-blue;
@@ -129,8 +136,11 @@
     }
 
     .exit {
+      margin-top: 10px;
       text-decoration: none;
       color: #f00;
+      background: none;
+      border: 1px solid;
     }
   }
 }

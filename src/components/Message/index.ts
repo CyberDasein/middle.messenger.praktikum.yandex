@@ -3,7 +3,8 @@ import template from "./message.hbs";
 import styles from "./message.scss";
 
 interface MessageProps {
-  message: string;
+  content: string;
+  isMine: boolean;
 }
 
 export class Message extends Block<MessageProps> {
@@ -12,7 +13,6 @@ export class Message extends Block<MessageProps> {
       ...props,
     });
   }
-
   render() {
     return this.compile(template, { ...this.props, styles });
   }

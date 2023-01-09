@@ -1,0 +1,28 @@
+<li class="user-chat {{#if isSelected }}user-chat--selected{{/if}}">
+    <div class="chat-wrap">
+        {{#if unread_count }}
+            <span class="unread">{{unread_count}}</span>
+        {{/if}}
+
+        <div class="user {{className}}">
+        {{#if avatar}}
+            <img class="avatar" src="https://ya-praktikum.tech/api/v2/resources{{avatar}}" alt="chat-avatar">
+        {{else}}
+            <div class="user__icon"></div>
+        {{/if}}
+        <div class="user__text">
+            {{#if last_message.user.first_name }}
+                <strong>{{title}}</strong>
+                {{else}}
+                Чат пустой, добавьте в него пользователя
+            {{/if}}
+                <span class="user-chat__time">{{time}}</span>
+            {{#if isSelected }}
+                {{{deleteChat}}}
+            {{/if}}
+            <p>{{last_message.content}}</p>
+        </div>
+        </div>
+
+    </div>
+</li>

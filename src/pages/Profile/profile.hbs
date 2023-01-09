@@ -1,36 +1,52 @@
 <div>
   <div class="back-area">
-    <div onclick="history.back()" class="back-btn"></div>
+    {{{backButton}}}
   </div>
-  <div class="profile">
+  <form class="profile">
     <div class="profile__wrap">
       <div class="profile__avatar">
         <div class="avatar-wrap">
-            <img src="{{{defaultAvatar}}}" alt="avatar" />
+            <img src="{{#if avatar}}https://ya-praktikum.tech/api/v2/resources{{avatar}}{{else}}{{{defaultAvatar}}}{{/if}}" alt="avatar" />
             {{{inputAvatar}}}
         </div>
       </div>
-      <div class="profile__name">Ivan</div>
+      <div class="profile__name">{{first_name}}</div>
       <ul class="profile__info">
-
+        <h4>Данные пользвателя</h4>
         <li class="profile__el">
+          <small>Логин</small>
           {{{inputLogin}}}
           <div class="error"></div>
         </li>
         <li class="profile__el">
+          <small>Имя</small>
           {{{inputFirstName}}}
           <div class="error"></div>
         </li>
         <li class="profile__el">
+          <small>Фамилия</small>
           {{{inputSecondName}}}
           <div class="error"></div>
         </li>
         <li class="profile__el">
+          <small>Ник</small>
+          {{{inputdisplayName}}}
+          <div class="error"></div>
+        </li>
+        <li class="profile__el">
+          <small>Телефон</small>
           {{{inputPhone}}}
           <div class="error"></div>
         </li>
         <li class="profile__el">
+          <small>Email</small>
           {{{inputEmail}}}
+          <div class="error"></div>
+        </li>
+        <br>
+        <h4>Смена пароля</h4>
+        <li class="profile__el">
+          {{{inputOldPassword}}}
           <div class="error"></div>
         </li>
         <li class="profile__el">
@@ -44,9 +60,12 @@
 
       </ul>
       <div class="profile__func">
-        {{{changeData}}}
+
+          {{{putUserData}}}
+          {{{changeData}}}
+
         {{{exitProfile}}}
       </div>
     </div>
-  </div>
+  </form>
 </div>
