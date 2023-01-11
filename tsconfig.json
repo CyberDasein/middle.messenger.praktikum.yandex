@@ -10,6 +10,13 @@
     "strictNullChecks": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "lib": [
+      "ESNext",
+      "DOM"
+    ]
+  },
+  "ts-node": {
+    "files": true
   }
 }
