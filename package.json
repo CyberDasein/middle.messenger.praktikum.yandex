@@ -11,6 +11,7 @@
     "build": "webpack build",
     "lint:ts": "eslint . --ext .ts,.js --fix",
     "lint:style": "npx stylelint \"**/*.scss\" --fix",
+    "lint:all": "npm run lint:ts && npm run lint:style",
     "test": "mocha --require ts-node/register --require ./mochaSetup.js './src/**/*.test.ts'"
   },
   "repository": {

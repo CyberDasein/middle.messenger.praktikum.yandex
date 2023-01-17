@@ -13,7 +13,7 @@
 
 Команда для сборки: npm run build
 
-Команда для сборки: npm run test
+Команда для тестов: npm run test
 
 Проект открывается на http://localhost:3000/
 
