@@ -1,5 +1,5 @@
 import Block from "../../utils/Block";
-import template from "./../Chat/chat.hbs";
+import template from "./chat.hbs";
 import { Link } from "../../components/Link";
 import { User } from "../../components/User";
 import styles from "./chat.scss";
@@ -17,7 +17,6 @@ class ChatPageBase extends Block {
   }
 
   init() {
-
     this.children.usersDialogs = new ChatsList({ isLoaded: false });
     this.children.myMessages = new MessagesList({});
 
@@ -34,7 +33,7 @@ class ChatPageBase extends Block {
       className: "align-center",
       events: {
         click: () => {
-          Router.go("/settings")
+          Router.go("/settings");
         },
       },
     });

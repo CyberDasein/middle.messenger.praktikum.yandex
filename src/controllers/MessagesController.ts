@@ -1,6 +1,6 @@
-import WSTransport, { WSTransportEvents } from '../utils/WsTransport';
-import store from '../utils/Store';
-import { Message } from '../interfaces/interfaces';
+import WSTransport, { WSTransportEvents } from "../utils/WsTransport";
+import store from "../utils/Store";
+import { Message } from "../interfaces/interfaces";
 
 class MessagesController {
   private sockets: Map<number, WSTransport> = new Map();
@@ -30,7 +30,7 @@ class MessagesController {
     }
 
     socket.send({
-      type: 'message',
+      type: "message",
       content: message,
     });
   }
@@ -42,7 +42,7 @@ class MessagesController {
       throw new Error(`Chat ${id} is not connected`);
     }
 
-    socket.send({type: 'get old', content: '0'});
+    socket.send({ type: "get old", content: "0" });
   }
 
   closeAll() {
@@ -74,7 +74,6 @@ class MessagesController {
     transport.on(WSTransportEvents.Close, () => this.onClose(id));
   }
 }
-
 
 const controller = new MessagesController();
 

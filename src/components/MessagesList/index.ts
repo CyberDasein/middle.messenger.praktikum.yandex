@@ -44,7 +44,8 @@ class MessengerBase extends Block<MessengerProps> {
           }
         },
         keyup: (e) => {
-          if (e.keyCode === 13) {
+          const keyEvent = <KeyboardEvent>e;
+          if (keyEvent.keyCode === 13) {
             const input: any = document.querySelector("#message");
             const inputMessage = this.children.inputMessage as Input;
             const message = inputMessage.getValue();
@@ -103,15 +104,15 @@ const withSelectedChatMessages = withStore((state) => {
     return {
       messages: [],
       selectedChat: undefined,
-      userId: state.user.id
+      userId: state.user.id,
     };
   }
 
   return {
     messages: (state.messages || {})[selectedChatId] || [],
     selectedChat: state.selectedChat,
-    userId: state.user.id
+    userId: state.user.id,
   };
 });
 
-export const MessagesList = withSelectedChatMessages(MessengerBase);
+export const MessagesList = withSelectedChatMessages(MessengerBase as any);

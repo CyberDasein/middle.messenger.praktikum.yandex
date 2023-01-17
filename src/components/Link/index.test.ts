@@ -14,7 +14,7 @@ describe("Link", () => {
   it("should render", () => {
     new BaseLink({
       href: "/test",
-      router: routerMock as any,
+      router: routerMock,
       label: "click",
     });
   });
@@ -24,7 +24,7 @@ describe("Link", () => {
     const instance = new BaseLink({
       label: "Click me",
       href,
-      router: routerMock as any,
+      router: routerMock,
     });
 
     const element = instance.element;

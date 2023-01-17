@@ -1,7 +1,7 @@
-import API, { ChatsAPI } from '../api/ChatsAPI';
-import { DeleteUsersInt } from '../interfaces/interfaces';
-import store from '../utils/Store';
-import MessagesController from './MessagesController';
+import API, { ChatsAPI } from "../api/ChatsAPI";
+import { DeleteUsersInt } from "../interfaces/interfaces";
+import store from "../utils/Store";
+import MessagesController from "./MessagesController";
 
 class ChatsController {
   private readonly api: ChatsAPI;
@@ -25,7 +25,7 @@ class ChatsController {
       await MessagesController.connect(chat.id, token);
     });
 
-    store.set('chats', chats);
+    store.set("chats", chats);
   }
 
   addUserToChat(id: number, userId: number) {
@@ -51,7 +51,7 @@ class ChatsController {
   }
 
   selectChat(id: number) {
-    store.set('selectedChat', id);
+    store.set("selectedChat", id);
   }
 }
 

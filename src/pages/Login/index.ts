@@ -65,7 +65,7 @@ export class LoginPage extends Block {
       events: {
         click: (e) => {
           e.preventDefault();
-          this.onSubmit(); 
+          this.onSubmit();
         },
       },
     });

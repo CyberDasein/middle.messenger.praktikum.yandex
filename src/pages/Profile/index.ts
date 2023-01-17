@@ -154,7 +154,9 @@ class ProfilePageBase extends Block {
           ProfilePage.isEditable = !ProfilePage.isEditable;
           this.setEditableFields(ProfilePage.isEditable);
           if (ProfilePage.isEditable) {
+            // @ts-ignore
             this.children.changeData.hide();
+            // @ts-ignore
             this.children.putUserData.show();
           }
         },
@@ -168,7 +170,9 @@ class ProfilePageBase extends Block {
         click: (e) => {
           if (ProfilePage.isEditable) {
             e.preventDefault();
+            // @ts-ignore
             this.children.changeData.show();
+            // @ts-ignore
             this.children.putUserData.hide();
             this.setEditableFields(false);
             this.onSave();
@@ -181,7 +185,7 @@ class ProfilePageBase extends Block {
       type: "button",
       events: {
         click: (e) => {
-          Router.go("/messenger")
+          Router.go("/messenger");
         },
       },
     });
@@ -235,6 +239,7 @@ class ProfilePageBase extends Block {
   changeAvatar() {
     const formData = new FormData();
     const input = document.querySelector("#avatar");
+    // @ts-ignore
     formData.append("avatar", input?.files[0]);
     UserController.updateAvatar(formData);
   }
