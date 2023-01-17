@@ -19,6 +19,8 @@
 
 <hr>
 
-Ссылка на netlify - https://gleaming-chimera-567ee6.netlify.app/
+<h2>Ссылки </h2>
 
+Ссылка на render - https://chat-app-5jpv.onrender.com/
+Ссылка на netlify - https://gleaming-chimera-567ee6.netlify.app/
 Ссылка на макет в Figma - https://www.figma.com/file/jF5fFFzgGOxQeB4CmKWTiE/Chat_external_link?node-id=0%3A1
