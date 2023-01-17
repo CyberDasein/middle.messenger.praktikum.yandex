@@ -1,5 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./userChat.hbs";
+import styles from "./userChat.scss";
 import { withStore } from "../../utils/Store";
 import { ChatInfo } from "../../interfaces/interfaces";
 import { Button } from "../Button";
