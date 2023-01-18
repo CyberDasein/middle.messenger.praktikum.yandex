@@ -13,7 +13,7 @@ export class AuthController {
   async signin(data: AuthData) {
     try {
       await this.api.signin(data);
-      
+
       await this.fetchUser();
 
       Router.go("/messenger");

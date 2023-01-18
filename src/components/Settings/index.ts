@@ -5,7 +5,7 @@ import { Button } from "../Button/index";
 import ChatsController from "../../controllers/ChatController";
 import { ChatProps, withSelectedChat } from "../UserChat";
 import UserController from "../../controllers/UserController";
-import { GetUser } from '../../interfaces/interfaces';
+import { GetUser } from "../../interfaces/interfaces";
 
 interface SettingsProps {
   selectedChat: ChatProps;
@@ -64,25 +64,25 @@ class SettingsBase extends Block<SettingsProps> {
     });
   }
   async addToChat(userLogin: string) {
-    const userData : GetUser[] = await UserController.getByUserLogin(userLogin);
+    const userData : any = await UserController.getByUserLogin(userLogin);
 
     if (userData[0]) {
       ChatsController.addUserToChat(this.props.selectedChat.id, userData[0].id);
     } else {
-      alert("Пользователь не найден")
+      alert("Пользователь не найден");
     }
   }
   async removeUsersFromChat(userLogin: string) {
-    const userData : GetUser[] = await UserController.getByUserLogin(userLogin);
+    const userData : any = await UserController.getByUserLogin(userLogin);
 
     if (userData[0]) {
-      ChatsController.removeUsersFromChat({ users: [userData[0].id], chatId: this.props.selectedChat.id});
+      ChatsController.removeUsersFromChat({ users: [userData[0].id], chatId: this.props.selectedChat.id });
     } else {
-      alert("Пользователь не найден")
+      alert("Пользователь не найден");
     }
   }
   render() {
     return this.compile(template, { ...this.props, styles });
   }
 }
-export const Settings = withSelectedChat(SettingsBase);
+export const Settings = withSelectedChat(SettingsBase as any);

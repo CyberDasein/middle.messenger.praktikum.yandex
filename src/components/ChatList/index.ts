@@ -1,7 +1,6 @@
 import Block from "../../utils/Block";
 import template from "./chatList.hbs";
 import { Chat } from "../UserChat";
-import styles from "./chatList.scss";
 import { withStore } from "../../utils/Store";
 import ChatsController from "../../controllers/ChatController";
 import { ChatInfo } from "../../interfaces/interfaces";
@@ -56,10 +55,10 @@ class ChatsListBase extends Block<ChatsListProps> {
   }
 
   protected render(): DocumentFragment {
-    return this.compile(template, { ...this.props, styles });
+    return this.compile(template, { ...this.props });
   }
 }
 
 const withChats = withStore((state) => ({ chats: [...(state.chats || [])] }));
 
-export const ChatsList = withChats(ChatsListBase);
+export const ChatsList = withChats(ChatsListBase as any);

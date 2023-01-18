@@ -4,7 +4,7 @@ import styles from "./userChat.scss";
 import { withStore } from "../../utils/Store";
 import { ChatInfo } from "../../interfaces/interfaces";
 import { Button } from "../Button";
-import ChatsController from '../../controllers/ChatController';
+import ChatsController from "../../controllers/ChatController";
 
 export interface ChatProps {
   last_message: Record<string, string>;
@@ -29,18 +29,17 @@ class ChatBase extends Block<ChatProps> {
       title: "Удалить чат",
       events: {
         click: (e) => {
-          this.deleteChat()
+          this.deleteChat();
         },
       },
     });
   }
   deleteChat() {
-    if(this.props.id === this.props.selectedChat?.id) {
-      ChatsController.delete(this.props.id)
+    if (this.props.id === this.props.selectedChat?.id) {
+      ChatsController.delete(this.props.id);
     }
   }
   render(): DocumentFragment {
-
     let time = this.props.last_message?.time;
     if (time !== undefined) {
       time = new Date(time).toString().substring(0, 15);
@@ -56,7 +55,8 @@ class ChatBase extends Block<ChatProps> {
 }
 
 export const withSelectedChat = withStore((state) => ({
+  // @ts-ignore
   selectedChat: (state.chats || []).find(({ id }) => id === state.selectedChat),
 }));
 
-export const Chat = withSelectedChat(ChatBase);
+export const Chat = withSelectedChat(ChatBase as any);

@@ -1,4 +1,4 @@
-import HTTPTransport from '../utils/Fetch';
+import HTTPTransport from "../utils/Fetch";
 
 export default abstract class BaseAPI {
   protected http: HTTPTransport;
@@ -13,5 +13,5 @@ export default abstract class BaseAPI {
 
   public abstract update?(identifier: string, data: unknown): Promise<unknown>;
 
-  public abstract delete?(identifier: string): Promise<unknown>;
+  public abstract delete?(identifier: string | number): Promise<unknown>;
 }

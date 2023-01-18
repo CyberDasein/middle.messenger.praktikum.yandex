@@ -27,7 +27,7 @@ export class ChatsAPI extends BaseAPI {
   }
 
   addChatAvatar(id: number, avatar: FormData): Promise<unknown> {
-    return this.http.put("/avatar", {chatId: id, avatar});
+    return this.http.put("/avatar", { chatId: id, avatar });
   }
 
   removeUsersFromChat(users: DeleteUsersInt): Promise<unknown> {

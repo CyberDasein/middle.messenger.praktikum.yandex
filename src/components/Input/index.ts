@@ -10,12 +10,11 @@ interface InputProps {
   events?: {
     blur?: (e: Event) => void;
     focus?: (e: Event) => void;
-    keyup?: (e: Event) => void | undefined;
+    keyup?: (e: Event | KeyboardEvent) => void | undefined;
   };
 }
 
 export class Input extends Block<InputProps> {
-  
   public getName() {
     return (this.element as HTMLInputElement).name;
   }
@@ -23,9 +22,9 @@ export class Input extends Block<InputProps> {
     return ((this.element as HTMLInputElement).value = value);
   }
   public setEditable(editable: boolean) {
-    if(editable) {
+    if (editable) {
       return (this.element as HTMLInputElement).removeAttribute("disabled");
-    } 
+    }
     return (this.element as HTMLInputElement).setAttribute("disabled", "disabled");
   }
   public getValue() {

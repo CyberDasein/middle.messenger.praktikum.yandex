@@ -4,7 +4,7 @@ import template from "./link.hbs";
 import styles from "./link.scss";
 
 interface LinkProps {
-  router: any;
+  router?: any;
   className?: string;
   href: string;
   label: string;
@@ -13,15 +13,15 @@ interface LinkProps {
   };
 }
 
-class BaseLink extends Block<LinkProps> {
+export class BaseLink extends Block<LinkProps> {
   constructor(props: LinkProps) {
     super({
       ...props,
       events: {
         click: (e) => {
-          e.preventDefault()
-          this.navigate()
-        } 
+          e.preventDefault();
+          this.navigate();
+        }
       }
     });
   }
@@ -33,4 +33,4 @@ class BaseLink extends Block<LinkProps> {
   }
 }
 
-export const Link = withRouter(BaseLink)
+export const Link = withRouter(BaseLink);
